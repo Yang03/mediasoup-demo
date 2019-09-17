@@ -114,9 +114,10 @@ function bundle(options)
 			.pipe(source(`${PKG.name}.js`))
 			.pipe(buffer())
 			.pipe(rename(`${PKG.name}.js`))
-			.pipe(gulpif(process.env.NODE_ENV === 'production',
-				uglify()
-			))
+			.pipe(uglify())
+			// .pipe(gulpif(process.env.NODE_ENV === 'production',
+			// 	uglify()
+			// ))
 			.pipe(header(BANNER, BANNER_OPTIONS))
 			.pipe(gulp.dest(OUTPUT_DIR));
 	}
